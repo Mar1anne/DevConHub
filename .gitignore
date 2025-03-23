@@ -7,7 +7,13 @@
 .buildlog/
 .history
 
-
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+# mpeltonen/sbt-idea plugin
+.idea_modules/
 
 # Flutter repo-specific
 /bin/cache/
