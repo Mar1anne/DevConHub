@@ -1,6 +1,7 @@
 import 'package:devcon_hub/features/agenda/domain/entities/agenda_item.dart';
 import 'package:devcon_hub/features/speakers/data/models/speaker_response.dart';
 
+/// DTO (Data Transfer Object) for AgendaItem.
 class AgendaItemResponse {
   final String id;
   final String title;
@@ -34,7 +35,9 @@ class AgendaItemResponse {
       endTime: DateTime.parse(json['end_time']),
     );
   }
+}
 
+extension AgendaResponseMapper on AgendaItemResponse {
   AgendaItem toEntity() {
     return AgendaItem(
       id: id,
