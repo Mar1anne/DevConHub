@@ -12,7 +12,8 @@ dependencies:
     sdk: flutter
   go_router: ^15.1.1
   video_player: ^2.9.5
-  firebase_database:
+  firebase_database: ^11.0.0
+  flutter_bloc: ^9.1.0
 
   cupertino_icons: ^1.0.8
 
