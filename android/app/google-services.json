@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "661281624310",
+    "project_id": "devconhub",
+    "storage_bucket": "devconhub.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:661281624310:android:290ccc8a7d226783addcd7",
+        "android_client_info": {
+          "package_name": "com.devconapp.devcon_hub"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxX5DFdDg4_pIfarfe0Ferg-OvI37kFZE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
