@@ -1,5 +1,6 @@
 import 'package:devcon_hub/core/cubit/generic_cubit.dart';
 import 'package:devcon_hub/core/cubit/generic_state.dart';
+import 'package:devcon_hub/features/home/presentation/view/drawer_scaffold.dart';
 import 'package:devcon_hub/features/speakers/domain/entities/speaker.dart';
 import 'package:devcon_hub/features/speakers/domain/usecases/get_speakers.dart';
 import 'package:devcon_hub/shared/extensions/nullable_string_extension.dart';
@@ -18,8 +19,8 @@ class SpeakerListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<GetSpeakersCubit>(
       create: (context) => GenericCubit(GetIt.instance<GetSpeakersUseCase>())..execute(),
-      child: Scaffold(
-        appBar: AppBar(title: const Text('Speakers')),
+      child: DrawerScaffold(
+        title: 'Speakers',
         body: BlocBuilder<GetSpeakersCubit, GetSpeakersState>(
           builder: (context, state) {
             if (state is GenericLoading) {

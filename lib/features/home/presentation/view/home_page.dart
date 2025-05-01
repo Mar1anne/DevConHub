@@ -1,4 +1,5 @@
 import 'package:devcon_hub/features/home/presentation/view/drawer_menu.dart';
+import 'package:devcon_hub/features/home/presentation/view/drawer_scaffold.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -6,14 +7,11 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: const DrawerMenu(),
-      appBar: AppBar(
-        title: const Text('DevCon App'),
-      ),
+    return DrawerScaffold(
       body: const Center(
         child: Text('Main Content Goes Here'),
       ),
+      title: 'DevCon App',
     );
   }
 }
