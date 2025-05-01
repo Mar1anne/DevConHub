@@ -34,7 +34,7 @@ class _LandingPageState extends State<LandingPage> with SingleTickerProviderStat
           });
 
     Future.delayed(const Duration(seconds: 3), () {
-      context.go('/home');
+      context.go('/home', extra: 'landing');
     });
   }
 
