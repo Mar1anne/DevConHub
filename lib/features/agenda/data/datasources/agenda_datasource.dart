@@ -1,20 +1,20 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:devcon_hub/features/agenda/data/models/agenda_item_response.dart';
-import 'package:firebase_database/firebase_database.dart';
 
 class FirebaseAgendaDatasource {
-  final FirebaseDatabase _db;
+  final FirebaseFirestore _firestore;
 
-  FirebaseAgendaDatasource(this._db);
+  FirebaseAgendaDatasource(this._firestore);
 
   Future<List<AgendaItemResponse>> fetchAgenda() async {
-    final ref = _db.ref('agenda');
-    final snapshot = await ref.get();
-    if (!snapshot.exists) return [];
+    final snapshot = await _firestore.collection('agenda').get();
 
-    final data = Map<String, dynamic>.from(snapshot.value as Map);
-    return data.entries.map((entry) {
-      final item = Map<String, dynamic>.from(entry.value);
-      return AgendaItemResponse.fromJson(item);
+    return snapshot.docs.map((doc) {
+      final data = doc.data();
+      return AgendaItemResponse.fromJson({
+        'id': doc.id,
+        ...data,
+      });
     }).toList();
   }
 }

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:devcon_hub/features/agenda/data/datasources/agenda_datasource.dart';
 import 'package:devcon_hub/features/agenda/data/repositories/agenda_repository_impl.dart';
 import 'package:devcon_hub/features/agenda/domain/repositories/agenda_repository.dart';
@@ -9,14 +10,14 @@ final injector = GetIt.instance;
 class AgendaInjector {
   static void initialize() {
     injector
-      // ..registerLazySingleton<FirebaseAgendaDatasource>(
-      //   () => FirebaseAgendaDatasource(),
-      // )
+      ..registerLazySingleton<FirebaseAgendaDatasource>(
+        () => FirebaseAgendaDatasource(FirebaseFirestore.instance),
+      )
       ..registerLazySingleton<AgendaRepository>(
         () => AgendaRepositoryImpl(injector<FirebaseAgendaDatasource>()),
       )
       ..registerLazySingleton(
-        () => GetAgenda(injector<AgendaRepository>()),
+        () => GetAgendaUseCase(injector<AgendaRepository>()),
       );
   }
 }
