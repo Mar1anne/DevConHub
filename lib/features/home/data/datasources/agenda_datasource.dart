@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:devcon_hub/features/agenda/data/models/agenda_item_response.dart';
+import 'package:devcon_hub/features/home/data/models/agenda_item_response.dart';
 
 class FirebaseAgendaDatasource {
   final FirebaseFirestore _firestore;
