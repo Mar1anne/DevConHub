@@ -4,11 +4,11 @@ import 'package:devcon_hub/features/speakers/data/models/speaker_response.dart';
 /// DTO (Data Transfer Object) for AgendaItem.
 class AgendaItemResponse {
   final String id;
-  final String title;
-  final String subtitle;
-  final String description;
+  final String? title;
+  final String? subtitle;
+  final String? description;
   final String type;
-  final SpeakerResponse speaker;
+  final SpeakerResponse? speaker;
   final DateTime startTime;
   final DateTime endTime;
 
@@ -45,7 +45,7 @@ extension AgendaResponseMapper on AgendaItemResponse {
       subtitle: subtitle,
       description: description,
       type: type,
-      speaker: speaker.toEntity(),
+      speaker: speaker?.toEntity(),
       startTime: startTime,
       endTime: endTime,
     );
