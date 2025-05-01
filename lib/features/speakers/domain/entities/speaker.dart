@@ -1,10 +1,10 @@
 class Speaker {
   final String id;
-  final String name;
-  final String bio;
-  final String imageUrl;
-  final String company;
-  final String jobTitle;
+  final String? name;
+  final String? bio;
+  final String? imageUrl;
+  final String? company;
+  final String? jobTitle;
 
   const Speaker({
     required this.id,

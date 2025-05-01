@@ -2,11 +2,11 @@ import 'package:devcon_hub/features/speakers/domain/entities/speaker.dart';
 
 class SpeakerResponse {
   final String id;
-  final String name;
-  final String imageUrl;
-  final String bio;
-  final String company;
-  final String title;
+  final String? name;
+  final String? imageUrl;
+  final String? bio;
+  final String? company;
+  final String? jobTitle;
 
   SpeakerResponse({
     required this.id,
@@ -14,7 +14,7 @@ class SpeakerResponse {
     required this.imageUrl,
     required this.bio,
     required this.company,
-    required this.title,
+    required this.jobTitle,
   });
 
   factory SpeakerResponse.fromJson(Map<String, dynamic> json) {
@@ -24,7 +24,7 @@ class SpeakerResponse {
       imageUrl: json['imageUrl'] as String,
       bio: json['bio'] as String,
       company: json['company'] as String,
-      title: json['title'] as String,
+      jobTitle: json['jobTitle'] as String,
     );
   }
 
@@ -35,7 +35,7 @@ class SpeakerResponse {
       imageUrl: imageUrl,
       bio: bio,
       company: company,
-      jobTitle: title,
+      jobTitle: jobTitle,
     );
   }
 }

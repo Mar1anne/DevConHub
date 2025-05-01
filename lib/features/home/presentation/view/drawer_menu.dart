@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class DrawerMenu extends StatelessWidget {
   const DrawerMenu({super.key});
@@ -25,7 +26,7 @@ class DrawerMenu extends StatelessWidget {
             leading: const Icon(Icons.people),
             title: const Text('Speakers'),
             onTap: () {
-              // Navigate to speakers page
+              context.go('/speakers');
             },
           ),
           ListTile(
