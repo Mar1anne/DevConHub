@@ -14,6 +14,9 @@ class AgendaRepositoryImpl implements AgendaRepository {
   @override
   Future<List<AgendaItem>> getAgendaItems() async {
     final items = await _datasource.fetchAgenda();
-    return items.map((item) => item.toEntity()).toList();
+    final agendaItems = items.map((item) => item.toEntity()).toList();
+
+    agendaItems.sort((a, b) => a.startTime!.compareTo(b.startTime!));
+    return agendaItems;
   }
 }

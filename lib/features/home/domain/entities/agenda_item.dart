@@ -1,13 +1,11 @@
-import 'package:devcon_hub/features/speakers/domain/entities/speaker.dart';
-
 class AgendaItem {
   final String id;
   final String? title;
   final String? subtitle;
   final String? description;
+  final String? imageUrl;
   final DateTime? startTime;
   final DateTime? endTime;
-  final Speaker? speaker;
   final String type;
 
   const AgendaItem({
@@ -15,9 +13,9 @@ class AgendaItem {
     required this.title,
     required this.subtitle,
     required this.description,
+    required this.imageUrl,
     required this.startTime,
     required this.endTime,
-    required this.speaker,
     required this.type,
   });
 }

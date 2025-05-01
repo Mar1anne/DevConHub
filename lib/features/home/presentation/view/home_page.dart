@@ -2,6 +2,7 @@ import 'package:devcon_hub/core/cubit/generic_cubit.dart';
 import 'package:devcon_hub/core/cubit/generic_state.dart';
 import 'package:devcon_hub/features/home/domain/entities/agenda_item.dart';
 import 'package:devcon_hub/features/home/domain/usecases/get_agenda.dart';
+import 'package:devcon_hub/features/home/presentation/view/agenda_item_card.dart';
 import 'package:devcon_hub/features/home/presentation/view/drawer_scaffold.dart';
 import 'package:devcon_hub/shared/extensions/nullable_string_extension.dart';
 import 'package:flutter/material.dart';
@@ -31,10 +32,7 @@ class HomePage extends StatelessWidget {
                 itemCount: agendaItems.length,
                 itemBuilder: (context, index) {
                   final agendaItem = agendaItems[index];
-                  return ListTile(
-                    title: Text(agendaItem.title.emptyIfNull),
-                    subtitle: Text(agendaItem.description.emptyIfNull),
-                  );
+                  return AgendaItemCard(item: agendaItem);
                 },
               );
             } else if (state is GenericError) {
