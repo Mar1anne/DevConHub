@@ -1,4 +1,4 @@
-import 'package:devcon_hub/features/agenda/domain/entities/agenda_item.dart';
+import 'package:devcon_hub/features/home/domain/entities/agenda_item.dart';
 
 /// Clean domain-layer contract.
 //

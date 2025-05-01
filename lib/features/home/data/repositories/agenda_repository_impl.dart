@@ -1,7 +1,7 @@
-import 'package:devcon_hub/features/agenda/data/datasources/agenda_datasource.dart';
-import 'package:devcon_hub/features/agenda/data/models/agenda_item_response.dart';
-import 'package:devcon_hub/features/agenda/domain/entities/agenda_item.dart';
-import 'package:devcon_hub/features/agenda/domain/repositories/agenda_repository.dart';
+import 'package:devcon_hub/features/home/data/datasources/agenda_datasource.dart';
+import 'package:devcon_hub/features/home/data/models/agenda_item_response.dart';
+import 'package:devcon_hub/features/home/domain/entities/agenda_item.dart';
+import 'package:devcon_hub/features/home/domain/repositories/agenda_repository.dart';
 
 /// Uses the datasource (could be Firebase or another backend).
 //

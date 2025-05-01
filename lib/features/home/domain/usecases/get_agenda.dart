@@ -1,6 +1,6 @@
 import 'package:devcon_hub/core/usecase/usecase.dart';
-import 'package:devcon_hub/features/agenda/domain/entities/agenda_item.dart';
-import 'package:devcon_hub/features/agenda/domain/repositories/agenda_repository.dart';
+import 'package:devcon_hub/features/home/domain/entities/agenda_item.dart';
+import 'package:devcon_hub/features/home/domain/repositories/agenda_repository.dart';
 
 class GetAgendaUseCase extends UseCase<List<AgendaItem>, void> {
   final AgendaRepository repository;

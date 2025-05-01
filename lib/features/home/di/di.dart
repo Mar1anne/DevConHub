@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:devcon_hub/features/agenda/data/datasources/agenda_datasource.dart';
-import 'package:devcon_hub/features/agenda/data/repositories/agenda_repository_impl.dart';
-import 'package:devcon_hub/features/agenda/domain/repositories/agenda_repository.dart';
-import 'package:devcon_hub/features/agenda/domain/usecases/get_agenda.dart';
+import 'package:devcon_hub/features/home/data/datasources/agenda_datasource.dart';
+import 'package:devcon_hub/features/home/data/repositories/agenda_repository_impl.dart';
+import 'package:devcon_hub/features/home/domain/repositories/agenda_repository.dart';
+import 'package:devcon_hub/features/home/domain/usecases/get_agenda.dart';
 import 'package:get_it/get_it.dart';
 
 final injector = GetIt.instance;
