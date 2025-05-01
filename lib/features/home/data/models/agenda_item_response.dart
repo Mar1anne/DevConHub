@@ -1,5 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:devcon_hub/features/home/domain/entities/agenda_item.dart';
-import 'package:devcon_hub/features/speakers/data/models/speaker_response.dart';
 
 /// DTO (Data Transfer Object) for AgendaItem.
 class AgendaItemResponse {
@@ -7,8 +7,8 @@ class AgendaItemResponse {
   final String? title;
   final String? subtitle;
   final String? description;
+  final String? imageUrl;
   final String type;
-  final SpeakerResponse? speaker;
   final DateTime startTime;
   final DateTime endTime;
 
@@ -17,8 +17,8 @@ class AgendaItemResponse {
     required this.title,
     required this.subtitle,
     required this.description,
+    required this.imageUrl,
     required this.type,
-    required this.speaker,
     required this.startTime,
     required this.endTime,
   });
@@ -29,10 +29,10 @@ class AgendaItemResponse {
       title: json['title'],
       subtitle: json['subtitle'],
       description: json['description'],
+      imageUrl: json['imageUrl'],
       type: json['type'],
-      speaker: SpeakerResponse.fromJson(json['speaker']),
-      startTime: DateTime.parse(json['start_time']),
-      endTime: DateTime.parse(json['end_time']),
+      startTime: (json['startTime'] as Timestamp).toDate(),
+      endTime: (json['endTime'] as Timestamp).toDate(),
     );
   }
 }
@@ -44,8 +44,8 @@ extension AgendaResponseMapper on AgendaItemResponse {
       title: title,
       subtitle: subtitle,
       description: description,
+      imageUrl: imageUrl,
       type: type,
-      speaker: speaker?.toEntity(),
       startTime: startTime,
       endTime: endTime,
     );
