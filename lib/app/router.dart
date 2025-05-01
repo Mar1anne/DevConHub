@@ -1,5 +1,6 @@
 import 'package:devcon_hub/features/home/home_route.dart';
 import 'package:devcon_hub/features/landing/landing_route.dart';
+import 'package:devcon_hub/features/speakers/speakers_route.dart';
 import 'package:go_router/go_router.dart';
 
 final router = GoRouter(
@@ -7,6 +8,6 @@ final router = GoRouter(
   routes: [
     LandingRoute.route,
     HomeRoute.route,
+    SpeakersRoute.route,
   ],
 );
-
