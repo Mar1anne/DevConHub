@@ -20,8 +20,8 @@ class DrawerMenu extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(Icons.schedule),
-            title: const Text('Schedule'),
-            onTap: () => context.go('/agenda'),
+            title: const Text('Agenda'),
+            onTap: () => context.go('/home'),
           ),
           ListTile(
             leading: const Icon(Icons.people),

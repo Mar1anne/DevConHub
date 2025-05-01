@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 
 class SpeakersRoute {
   static const String path = '/speakers';
-  static const String speakerDetailsPath = '/speaker_details';
+  static const String speakerDetailsPath = '/speaker/details';
 
   static GoRoute route = GoRoute(
     path: path,
