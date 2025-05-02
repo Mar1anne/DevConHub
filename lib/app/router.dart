@@ -10,6 +10,7 @@ final router = GoRouter(
     LandingRoute.route,
     HomeRoute.route,
     SpeakersRoute.route,
+    SpeakersRoute.speakerDetailsRoute,
     ResourcesRoute.route,
   ],
 );

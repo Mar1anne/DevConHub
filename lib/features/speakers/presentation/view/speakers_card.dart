@@ -1,17 +1,13 @@
+import 'package:devcon_hub/features/speakers/domain/entities/speaker.dart';
+import 'package:devcon_hub/shared/extensions/nullable_string_extension.dart';
 import 'package:flutter/material.dart';
 
 class SpeakerCard extends StatelessWidget {
-  final String imageUrl;
-  final String name;
-  final String jobTitle;
-  final String company;
+  final Speaker speaker;
 
   const SpeakerCard({
     super.key,
-    required this.imageUrl,
-    required this.name,
-    required this.jobTitle,
-    required this.company,
+    required this.speaker,
   });
 
   @override
@@ -28,19 +24,19 @@ class SpeakerCard extends StatelessWidget {
               aspectRatio: 1,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8),
-                child: Image.network(imageUrl, fit: BoxFit.cover),
+                child: Image.network(speaker.imageUrl.emptyIfNull, fit: BoxFit.cover),
               ),
             ),
             const SizedBox(height: 8),
             Text(
-              name.toUpperCase(),
+              speaker.name.emptyIfNull.toUpperCase(),
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
             ),
             const SizedBox(height: 4),
             Text(
-              '$jobTitle @ $company',
+              '${speaker.jobTitle.emptyIfNull} @ ${speaker.company.emptyIfNull}',
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: Colors.grey[700],
                   ),
