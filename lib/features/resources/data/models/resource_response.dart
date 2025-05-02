@@ -2,23 +2,26 @@ import 'package:devcon_hub/features/resources/domain/entities/resource.dart';
 
 class ResourceResponse {
   String id;
-  String? title;
+  String? name;
   String? description;
   String? url;
+  String? imageUrl;
 
   ResourceResponse({
     required this.id,
-    this.title,
+    this.name,
     this.description,
     this.url,
+    this.imageUrl,
   });
 
   factory ResourceResponse.fromJson(Map<String, dynamic> json) {
     return ResourceResponse(
       id: json['id'] as String,
-      title: json['title'] as String?,
+      name: json['name'] as String?,
       description: json['description'] as String?,
       url: json['url'] as String?,
+      imageUrl: json['imageUrl'] as String?,
     );
   }
 }
@@ -27,9 +30,10 @@ extension ResourceMapper on ResourceResponse {
   Resource toEntity() {
     return Resource(
       id: id,
-      title: title ?? '',
+      name: name ?? '',
       description: description ?? '',
       url: url ?? '',
+      imageUrl: imageUrl ?? '',
     );
   }
 }
