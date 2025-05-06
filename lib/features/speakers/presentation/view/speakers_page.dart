@@ -40,7 +40,7 @@ class SpeakerListPage extends StatelessWidget {
                         });
                   });
             } else if (state is GenericError) {
-              return Center(child: Text(state.toString()));
+              return Center(child: Text('Something went wrong.'));
             }
             return const SizedBox.shrink();
           },
