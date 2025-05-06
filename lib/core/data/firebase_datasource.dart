@@ -1,21 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-typedef FromJson<T> = T Function(Map<String, dynamic> json);
+class FirebaseGenericDatasource<T> {
+  final FirebaseFirestore firestore;
+  final String collectionPath;
+  final T Function(Map<String, dynamic> json, String id) fromJson;
 
-class FirebaseGenericDataSource {
-  final FirebaseFirestore _firestore;
+  FirebaseGenericDatasource({
+    required this.firestore,
+    required this.collectionPath,
+    required this.fromJson,
+  });
 
-  FirebaseGenericDataSource(this._firestore);
-
-  Future<List<T>> fetchCollection<T>({
-    required String collectionName,
-    required FromJson<T> fromJson,
-  }) async {
-    final snapshot = await _firestore.collection(collectionName).get();
-
-    return snapshot.docs.map((doc) {
-      final data = doc.data();
-      return fromJson({'id': doc.id, ...data});
-    }).toList();
+  Future<List<T>> fetchAll() async {
+    final snapshot = await firestore.collection(collectionPath).get();
+    return snapshot.docs.map((doc) => fromJson(doc.data(), doc.id)).toList();
   }
 }

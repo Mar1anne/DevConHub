@@ -3,14 +3,16 @@ import 'package:devcon_hub/core/data/firebase_datasource.dart';
 import 'package:devcon_hub/features/speakers/data/models/speaker_response.dart';
 
 class SpeakersDataSource {
-  final FirebaseGenericDataSource _base;
+  final FirebaseGenericDatasource<SpeakerResponse> _datasource;
 
-  SpeakersDataSource(FirebaseFirestore firestore) : _base = FirebaseGenericDataSource(firestore);
+  SpeakersDataSource(FirebaseFirestore firestore)
+      : _datasource = FirebaseGenericDatasource<SpeakerResponse>(
+          firestore: firestore,
+          collectionPath: 'speakers',
+          fromJson: (json, id) => SpeakerResponse.fromJson({'id': id, ...json}),
+        );
 
   Future<List<SpeakerResponse>> fetchSpeakers() {
-    return _base.fetchCollection<SpeakerResponse>(
-      collectionName: 'speakers',
-      fromJson: SpeakerResponse.fromJson,
-    );
+    return _datasource.fetchAll();
   }
 }

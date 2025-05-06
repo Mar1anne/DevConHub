@@ -3,14 +3,16 @@ import 'package:devcon_hub/core/data/firebase_datasource.dart';
 import 'package:devcon_hub/features/home/data/models/agenda_item_response.dart';
 
 class AgendaDataSource {
-  final FirebaseGenericDataSource _base;
+  final FirebaseGenericDatasource<AgendaItemResponse> _datasource;
 
-  AgendaDataSource(FirebaseFirestore firestore) : _base = FirebaseGenericDataSource(firestore);
+  AgendaDataSource(FirebaseFirestore firestore)
+      : _datasource = FirebaseGenericDatasource<AgendaItemResponse>(
+          firestore: firestore,
+          collectionPath: 'agenda',
+          fromJson: (json, id) => AgendaItemResponse.fromJson({'id': id, ...json}),
+        );
 
   Future<List<AgendaItemResponse>> fetchAgenda() {
-    return _base.fetchCollection<AgendaItemResponse>(
-      collectionName: 'agenda',
-      fromJson: AgendaItemResponse.fromJson,
-    );
+    return _datasource.fetchAll();
   }
 }
