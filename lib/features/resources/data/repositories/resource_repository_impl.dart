@@ -4,7 +4,7 @@ import 'package:devcon_hub/features/resources/domain/entities/resource.dart';
 import 'package:devcon_hub/features/resources/domain/repositories/resource_repository.dart';
 
 class ResourceRepositoryImpl implements ResourceRepository {
-  final FirebaseResourceDatasource _datasource;
+  final ResourcesDataSource _datasource;
 
   ResourceRepositoryImpl(this._datasource);
 

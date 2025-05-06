@@ -8,11 +8,11 @@ import 'package:get_it/get_it.dart';
 class SpeakersInjector {
   static void initialize(GetIt injector) {
     injector
-      ..registerLazySingleton<FirebaseSpeakerDataSource>(
-        () => FirebaseSpeakerDataSource(FirebaseFirestore.instance),
+      ..registerLazySingleton<SpeakersDataSource>(
+        () => SpeakersDataSource(FirebaseFirestore.instance),
       )
       ..registerLazySingleton<SpeakerRepository>(
-        () => SpeakerRepositoryImpl(injector<FirebaseSpeakerDataSource>()),
+        () => SpeakerRepositoryImpl(injector<SpeakersDataSource>()),
       )
       ..registerLazySingleton(
         () => GetSpeakersUseCase(injector<SpeakerRepository>()),

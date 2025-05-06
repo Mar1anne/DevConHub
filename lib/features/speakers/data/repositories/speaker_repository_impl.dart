@@ -3,7 +3,7 @@ import 'package:devcon_hub/features/speakers/domain/entities/speaker.dart';
 import 'package:devcon_hub/features/speakers/domain/repositories/speaker_repository.dart';
 
 class SpeakerRepositoryImpl implements SpeakerRepository {
-  final FirebaseSpeakerDataSource _dataSource;
+  final SpeakersDataSource _dataSource;
 
   SpeakerRepositoryImpl(this._dataSource);
 

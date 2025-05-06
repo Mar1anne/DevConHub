@@ -8,11 +8,11 @@ import 'package:get_it/get_it.dart';
 class AgendaInjector {
   static void initialize(GetIt injector) {
     injector
-      ..registerLazySingleton<FirebaseAgendaDatasource>(
-        () => FirebaseAgendaDatasource(FirebaseFirestore.instance),
+      ..registerLazySingleton<AgendaDataSource>(
+        () => AgendaDataSource(FirebaseFirestore.instance),
       )
       ..registerLazySingleton<AgendaRepository>(
-        () => AgendaRepositoryImpl(injector<FirebaseAgendaDatasource>()),
+        () => AgendaRepositoryImpl(injector<AgendaDataSource>()),
       )
       ..registerLazySingleton(
         () => GetAgendaUseCase(injector<AgendaRepository>()),
