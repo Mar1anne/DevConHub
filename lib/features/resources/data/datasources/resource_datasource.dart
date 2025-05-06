@@ -3,14 +3,16 @@ import 'package:devcon_hub/core/data/firebase_datasource.dart';
 import 'package:devcon_hub/features/resources/data/models/resource_response.dart';
 
 class ResourcesDataSource {
-  final FirebaseGenericDataSource _base;
+  final FirebaseGenericDatasource<ResourceResponse> _datasource;
 
-  ResourcesDataSource(FirebaseFirestore firestore) : _base = FirebaseGenericDataSource(firestore);
+  ResourcesDataSource(FirebaseFirestore firestore)
+      : _datasource = FirebaseGenericDatasource<ResourceResponse>(
+          firestore: firestore,
+          collectionPath: 'resources',
+          fromJson: (json, id) => ResourceResponse.fromJson({'id': id, ...json}),
+        );
 
   Future<List<ResourceResponse>> fetchResources() {
-    return _base.fetchCollection<ResourceResponse>(
-      collectionName: 'resources',
-      fromJson: ResourceResponse.fromJson,
-    );
+    return _datasource.fetchAll();
   }
 }
