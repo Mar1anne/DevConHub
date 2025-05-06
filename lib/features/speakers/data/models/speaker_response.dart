@@ -20,11 +20,11 @@ class SpeakerResponse {
   factory SpeakerResponse.fromJson(Map<String, dynamic> json) {
     return SpeakerResponse(
       id: json['id'] as String,
-      name: json['name'] as String,
-      imageUrl: json['imageUrl'] as String,
-      bio: json['bio'] as String,
-      company: json['company'] as String,
-      jobTitle: json['jobTitle'] as String,
+      name: json['name'] as String?,
+      imageUrl: json['imageUrl'] as String?,
+      bio: json['bio'] as String?,
+      company: json['company'] as String?,
+      jobTitle: json['jobTitle'] as String?,
     );
   }
 
