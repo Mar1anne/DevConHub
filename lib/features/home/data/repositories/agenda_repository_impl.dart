@@ -7,7 +7,7 @@ import 'package:devcon_hub/features/home/domain/repositories/agenda_repository.d
 //
 // Maps AgendaResponse to the domain entity AgendaItem using a toEntity() extension or method.
 class AgendaRepositoryImpl implements AgendaRepository {
-  final FirebaseAgendaDatasource _datasource;
+  final AgendaDataSource _datasource;
 
   AgendaRepositoryImpl(this._datasource);
 

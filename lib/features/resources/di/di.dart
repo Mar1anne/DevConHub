@@ -8,11 +8,11 @@ import 'package:get_it/get_it.dart';
 class ResourcesInjector {
   static void initialize(GetIt injector) {
     injector
-      ..registerLazySingleton<FirebaseResourceDatasource>(
-        () => FirebaseResourceDatasource(FirebaseFirestore.instance),
+      ..registerLazySingleton<ResourcesDataSource>(
+        () => ResourcesDataSource(FirebaseFirestore.instance),
       )
       ..registerLazySingleton<ResourceRepository>(
-        () => ResourceRepositoryImpl(injector<FirebaseResourceDatasource>()),
+        () => ResourceRepositoryImpl(injector<ResourcesDataSource>()),
       )
       ..registerLazySingleton(
         () => GetResourcesUseCase(injector<ResourceRepository>()),

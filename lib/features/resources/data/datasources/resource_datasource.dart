@@ -1,20 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:devcon_hub/core/data/firebase_datasource.dart';
 import 'package:devcon_hub/features/resources/data/models/resource_response.dart';
 
-class FirebaseResourceDatasource {
-  final FirebaseFirestore _firestore;
+class ResourcesDataSource {
+  final FirebaseGenericDataSource _base;
 
-  FirebaseResourceDatasource(this._firestore);
+  ResourcesDataSource(FirebaseFirestore firestore) : _base = FirebaseGenericDataSource(firestore);
 
-  Future<List<ResourceResponse>> fetchResources() async {
-    final snapshot = await _firestore.collection('resources').get();
-
-    return snapshot.docs.map((doc) {
-      final data = doc.data();
-      return ResourceResponse.fromJson({
-        'id': doc.id,
-        ...data,
-      });
-    }).toList();
+  Future<List<ResourceResponse>> fetchResources() {
+    return _base.fetchCollection<ResourceResponse>(
+      collectionName: 'resources',
+      fromJson: ResourceResponse.fromJson,
+    );
   }
 }

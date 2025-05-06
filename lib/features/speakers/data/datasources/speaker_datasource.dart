@@ -1,20 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:devcon_hub/core/data/firebase_datasource.dart';
 import 'package:devcon_hub/features/speakers/data/models/speaker_response.dart';
 
-class FirebaseSpeakerDataSource {
-  final FirebaseFirestore _firestore;
+class SpeakersDataSource {
+  final FirebaseGenericDataSource _base;
 
-  FirebaseSpeakerDataSource(this._firestore);
+  SpeakersDataSource(FirebaseFirestore firestore) : _base = FirebaseGenericDataSource(firestore);
 
-  Future<List<SpeakerResponse>> fetchSpeakers() async {
-    final snapshot = await _firestore.collection('speakers').get();
-
-    return snapshot.docs.map((doc) {
-      final data = doc.data();
-      return SpeakerResponse.fromJson({
-        'id': doc.id,
-        ...data,
-      });
-    }).toList();
+  Future<List<SpeakerResponse>> fetchSpeakers() {
+    return _base.fetchCollection<SpeakerResponse>(
+      collectionName: 'speakers',
+      fromJson: SpeakerResponse.fromJson,
+    );
   }
 }
