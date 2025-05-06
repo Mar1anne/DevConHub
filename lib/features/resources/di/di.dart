@@ -5,10 +5,8 @@ import 'package:devcon_hub/features/resources/domain/repositories/resource_repos
 import 'package:devcon_hub/features/resources/domain/usecases/get_resources.dart';
 import 'package:get_it/get_it.dart';
 
-final injector = GetIt.instance;
-
 class ResourcesInjector {
-  static void initialize() {
+  static void initialize(GetIt injector) {
     injector
       ..registerLazySingleton<FirebaseResourceDatasource>(
         () => FirebaseResourceDatasource(FirebaseFirestore.instance),

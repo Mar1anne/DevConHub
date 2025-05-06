@@ -5,10 +5,8 @@ import 'package:devcon_hub/features/home/domain/repositories/agenda_repository.d
 import 'package:devcon_hub/features/home/domain/usecases/get_agenda.dart';
 import 'package:get_it/get_it.dart';
 
-final injector = GetIt.instance;
-
 class AgendaInjector {
-  static void initialize() {
+  static void initialize(GetIt injector) {
     injector
       ..registerLazySingleton<FirebaseAgendaDatasource>(
         () => FirebaseAgendaDatasource(FirebaseFirestore.instance),
