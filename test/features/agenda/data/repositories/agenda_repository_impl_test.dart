@@ -1,3 +1,5 @@
+import 'package:devcon_hub/core/cache/generic_cache.dart';
+import 'package:devcon_hub/core/cache/in_memory_cache.dart';
 import 'package:devcon_hub/features/home/data/datasources/agenda_datasource.dart';
 import 'package:devcon_hub/features/home/data/models/agenda_item_response.dart';
 import 'package:devcon_hub/features/home/data/repositories/agenda_repository_impl.dart';
@@ -10,10 +12,12 @@ class MockAgendaDataSource extends Mock implements AgendaDataSource {}
 void main() {
   late AgendaRepositoryImpl repository;
   late MockAgendaDataSource mockDataSource;
+  late GenericCache<AgendaItem> agendaCache;
 
   setUp(() {
     mockDataSource = MockAgendaDataSource();
-    repository = AgendaRepositoryImpl(mockDataSource);
+    agendaCache = InMemoryCache<AgendaItem>();
+    repository = AgendaRepositoryImpl(mockDataSource, agendaCache);
   });
 
   test('getAgenda returns list of Agenda entities', () async {
