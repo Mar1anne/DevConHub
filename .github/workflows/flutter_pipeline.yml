@@ -1,0 +1,101 @@
+name: Flutter CI/CD
+
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+
+jobs:
+  analyze:
+    name: Dart Analyze
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.27.4'
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Run analyzer
+        run: flutter analyze
+
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.27.4'
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Run tests
+        run: flutter test
+
+  build-android:
+    name: Build Android APK
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.27.4'
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build APK
+        run: flutter build apk --release
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
+
+  build-ios:
+    name: Build iOS App
+    runs-on: macos-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.27.4'
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build iOS
+        run: flutter build ios --release --no-codesign
+
+      - name: Zip .app for download
+        run: |
+          mkdir -p ios-artifact
+          zip -r ios-artifact/Runner.app.zip build/ios/iphoneos/Runner.app
+
+      - name: Upload iOS App
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-app
+          path: ios-artifact/Runner.app.zip
