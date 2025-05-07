@@ -30,6 +30,7 @@ void main() {
 
     when(() => mockUseCase.call(null)).thenAnswer((_) async => resources);
     when(() => mockCubit.execute()).thenAnswer((_) async {});
+    when(() => mockCubit.close()).thenAnswer((_) async {});
   });
 
   tearDownAll(() {

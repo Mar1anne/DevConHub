@@ -45,6 +45,7 @@ void main() {
 
     when(() => mockUseCase.call(null)).thenAnswer((_) async => speakers);
     when(() => mockCubit.execute()).thenAnswer((_) async {});
+    when(() => mockCubit.close()).thenAnswer((_) async {});
   });
 
   tearDownAll(() {
