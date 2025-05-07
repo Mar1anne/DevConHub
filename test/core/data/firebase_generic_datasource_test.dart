@@ -3,7 +3,8 @@ import 'package:devcon_hub/core/data/firebase_datasource.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-// --- Mock Classes ---
+// ignore_for_file: subtype_of_sealed_class
+
 class MockFirebaseFirestore extends Mock implements FirebaseFirestore {}
 
 class MockCollectionReference extends Mock implements CollectionReference<Map<String, dynamic>> {}
